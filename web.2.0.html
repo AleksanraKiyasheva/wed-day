@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wedding Invitation</title>
+
+    <!-- FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================
+RESET
+========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #8ba8887d;
+            font-family: 'Montserrat', sans-serif;
+            color: #4e4a43;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+BACKGROUND GRAIN 8ba8887d цвет бг
+========================= */
+
+        body:before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            opacity: 0.06;
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+            pointer-events: none;
+        }
+
+        /* =========================
+MAIN LAYOUT
+========================= */
+
+        .wrapper {
+            width: 100%;
+            max-width: 1300px;
+            margin: auto;
+            padding: 100px 20px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        /* =========================
+CARD
+========================= */
+
+        .card {
+            width: 340px;
+            background: #fbf8f2;
+            border: 2px solid #8ba888;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* =========================
+TYPOGRAPHY
+========================= */
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            color: #2d3327;
+        }
+
+        .section {
+            padding: 35px 35px;
+        }
+
+        .title-top {
+            text-align: center;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            font-size: 14px;
+        }
+
+        .names {
+            text-align: center;
+            line-height: 0.95;
+        }
+
+        .names span {
+            display: block;
+            font-family: 'Great Vibes', cursive;
+            font-size: 42px;
+            margin: 10px 0;
+        }
+
+        .date {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #777;
+        }
+
+        .section-title {
+            font-size: 42px;
+            line-height: 1;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .text {
+            font-size: 16px;
+            line-height: 1.9;
+            text-align: center;
+            color: #5d5850;
+        }
+
+        .ra {
+            gap: 20px;
+            display: grid;
+        }
+
+        /* =========================
+BOTANICAL DECOR
+========================= */
+
+        .leaf-top {
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            width: 180px;
+            opacity: 0.2;
+        }
+
+        .leaf-bottom {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 160px;
+            opacity: 0.2;
+        }
+
+        /* =========================
+IMAGE BLOCK
+========================= */
+
+        .hero-image {
+            width: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* =========================
+INVITATION TEXT
+========================= */
+
+        .invitation {
+            padding: 45px 35px;
+            text-align: center;
+        }
+
+        .invitation h2 {
+            font-size: 44px;
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        .invitation p {
+            line-height: 1.9;
+            font-size: 14px;
+        }
+
+        /* =========================
+CALENDAR
+========================= */
+
+        .calendar {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .calendar h3 {
+            font-size: 38px;
+            margin-bottom: 25px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        .calendar-grid span {
+            padding: 5px;
+        }
+
+        .active-day {
+            width: 32px;
+            height: 32px;
+            margin: auto;
+            border-radius: 50%;
+            background: #8ba888;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* =========================
+TIMER
+========================= */
+        .timer {
+            display: flex;
+            gap: 20px;
+            font-family: Montserrat, sans-serif;
+            justify-content: center;
+            padding: 20px;
+            color: #ffffff;
+            font-size: 10px;
+        }
+
+        .timer-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #8ba888;
+            padding: 15px;
+            border-radius: 30px;
+            min-width: 60px;
+            width: 100%;
+        }
+
+        .timer-item span:first-child {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+
+        /* =========================
+PROGRAM
+========================= */
+
+        .program-image {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .program {
+            padding: 40px 35px;
+        }
+
+        .program h2 {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 35px;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 22px;
+            align-items: flex-start;
+        }
+
+        .time {
+            width: 90px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 34px;
+            color: #2d3327;
+        }
+
+        .event {
+            flex: 1;
+            fontize: 14px;
+            line-height: 1.6;
+            padding-top: 10px;
+        }
+
+        /* =========================
+VENUE
+========================= */
+
+        .venue-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            margin: 25px 0;
+        }
+
+        .address {
+            text-align: center;
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        /* =========================
+PALETTE
+========================= */
+
+        .palette {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin: 35px 0;
+        }
+
+        .palette span {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+        }
+
+        /* =========================
+MOODBOARD
+========================= */
+
+        .moodboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .moodboard img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .dress-image {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        /* =========================
+BUTTON
+========================= */
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            border-radius: 100px;
+            background: #8ba888;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            margin-top: 25px;
+            transition: 0.3s;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            border: none;
+        }
+        }
+
+        .btn:hover {
+            background: #5e6549;
+        }
+
+        /* =========================
+FOOTER BLOCK #6c8b60 #7a8060
+========================= */
+
+        .footer-block {
+            background: #8ba888;
+            color: white;
+            text-align: center;
+            padding: 60px 30px;
+        }
+
+        .footer-block h2 {
+            color: white;
+            font-size: 46px;
+            line-height: 1.1;
+        }
+
+        /* =========================
+SIDE TITLE
+========================= */
+
+        .side-title {
+            position: absolute;
+            left: -120px;
+            top: 50%;
+            transform: rotate(-90deg);
+            transform-origin: left top;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            color: #2d3327;
+            letter-spacing: 2px;
+        }
+
+        /* =========================
+ANIMATION
+========================= */
+
+        .card {
+            animation: fadeUp 1s ease;
+        }
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* =========================
+MOBILE
+========================= */
+
+        max-width:1100px {
+
+            .cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .side-title {
+                display: none;
+            }
+
+        }
+
+        max-width:480px {
+
+            .wrapper {
+                padding: 50px 15px;
+            }
+
+            .card {
+                width: 100%;
+            }
+
+            .section-title,
+            .invitation h2 {
+                font-size: 34px;
+            }
+
+            .names {
+                font-size: 46px;
+            }
+
+            .footer-block h2 {
+                font-size: 34px;
+            }
+
+        }
+
+        .simple-divider {
+            border: none;
+            border-top: 2px solid #8ba888;
+            margin: 2px;
+            opacity: 30%;
+            margin: 0 auto;
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <div class="cards">
+
+            <!-- =========================
+        LEFT CARD
+        ========================= -->
+
+            <div class="card">
+
+
+
+                <img class="leaf-top" src="https://pngimg.com/d/branches_PNG57.png">
+                <img class="leaf-bottom" src="https://pngimg.com/d/branches_PNG57.png">
+
+                <div class="section">
+
+                    <div class="title-top">
+                        ПРИГЛАШЕНИЕ НА СВАДЬБУ
+                    </div>
+
+                    <h1 class="names">
+                        Александра
+                        <span>&</span>
+                        Виктор
+                    </h1>
+
+                    <div class="date">
+                        5 сентября 2026
+                    </div>
+
+                </div>
+
+                <img class="hero-image" src="C:\Users\Виктор\Downloads\IMG_0190.png">
+                <div>
+                    <div class="invitation">
+
+                        <h2>
+                            ДОРОГИЕ
+
+                            РОДНЫЕ И БЛИЗКИЕ
+                        </h2>
+
+                        <p>
+                            Совсем скоро в нашей жизни
+                            предстоят счастливые перемены!
+                            Будем рады разделить с вами этот незабываемый день - день нашей свадьбы
+                        </p>
+
+                        <div class="calendar">
+
+                            <h3>СЕНТЯБРЬ</h3>
+
+                            <div class="calendar-grid">
+
+                                <span>Пн</span>
+                                <span>Вт</span>
+                                <span>Ср</span>
+                                <span>Чт</span>
+                                <span>Пт</span>
+                                <span>Сб</span>
+                                <span>Вс</span>
+
+                                <span></span>
+
+
+                                <span>1</span>
+
+                                <span>2</span>
+                                <span>3</span>
+                                <span>4</span>
+                                <span class="active-day">
+                                    5
+                                </span>
+                                <span>6</span>
+                                <span>7</span>
+                                <span>8</span>
+
+                                <span>9</span>
+                                <span>10</span>
+                                <span>11</span>
+                                <span>12</span>
+
+
+
+                                <span>13</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <img class="program-image" src="C:\Users\Виктор\Downloads\IMG_0188.png">
+
+
+
+                    <div class="section">
+
+                        <h2 class="section-title">
+                            МЕСТО ПРОВЕДЕНИЯ
+                        </h2>
+
+                        <p class="text">
+                            Наша свадьба пройдет
+                            в живописном месте
+                            <h2 class="section-title">"Kravchenko Place"<h2>
+                        </p>
+
+                        <img class="venue-image" src="https://kravchenko-place.ru/img/proposal/proposal-5.webp">
+
+                        <p class="address">
+                            Динской район,
+
+                            Первореченское поселение,
+
+                            ул. Восточная 10
+                        </p>
+
+                        <a href="https://yandex.ru/maps/-/CPCX789n" target="_blank" class="btn">
+                            Открыть карту
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =========================
+        RIGHT CARD
+        ========================= -->
+                <hr class="simple-divider">
+                <div class="program">
+
+
+                    <h2>
+                        ПРОГРАММА
+                    </h2>
+
+                    <div class="timeline-item">
+                        <div class="time">15:30</div>
+                        <div class="event">Сбор гостей/Фуршет</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="time">16:00</div>
+                        <div class="event">Выездная церемония</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="time">17:00</div>
+                        <div class="event">Банкет</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="time">23:00</div>
+                        <div class="event">Завершение вечера</div>
+                    </div>
+
+
+                </div>
+                <hr class="simple-divider">
+
+
+                <!-- WISH -->
+
+                <div class="section">
+                    <h2 class="section-title">
+                        ПОЖЕЛАНИЯ
+                    </h2>
+
+                    <div class="ra">
+                        <p class="text">
+                            Просим не дарить нам цветы, прекрасной альтернативой станет бутылка вашего любимого вина </p>
+                        <p class="text"> Если хотите сделать нам ценный и нужный подарок, мы будем признательны за вклад в бюджет нашей молодой семьи
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- DRESS CODE -->
+
+                <div class="section">
+
+                    <h2 class="section-title">
+                        ДРЕСС-КОД
+                    </h2>
+
+                    <p class="text">
+                        Будем рады, если вы поддержите
+                        цветовую гамму нашего праздника
+                    </p>
+
+                    <div class="palette">
+
+                        <span style="background:#FAEBD7"></span>
+                        <span style="background:#FFDAB9"></span>
+                        <span style="background:#D2B48C"></span>
+                        <span style="background:#584737"></span>
+                        <span style="background:#010101"></span>
+
+                        <span style="background:#4E6838"></span>
+                        <span style="background:#768743"></span>
+                        <span style="background:#B1BDA7"></span>
+                        <span style="background:#C8A098"></span>
+                        <span style="background:#FFE4E1"></span>
+
+                    </div>
+
+                    <img class="dress-image" src="C:\Users\Виктор\Downloads\dress.png">
+
+
+
+
+
+                </div>
+                <!-- DETAILS-->
+
+                <div class="section">
+
+                    <h2 class="section-title">
+                        ДЕТАЛИ ТОРЖЕСТВА
+                    </h2>
+                    <div class="ra">
+                        <p class="text">
+                            Мы сознательно ушли от городского шума в пользу природного уюта. Обратите внимание, что территория площадки оформлена дорожками из мелкого камня, рекомендуем отдать предпочтение обуви на плоской подошве, танкетке или устойчивом каблуке.
+                        </p>
+
+                        <p class="text">
+                            На нашей свадьбе планируется активная программа, формат мероприятия не предполагет дестких развлечений и аниматоров.
+                        </p>
+                        <div class="moodboard">
+
+                            <img src="https://avatars.mds.yandex.net/get-altay/11299266/2a00000191fdfb57966307c439804e7e529c/XXXL">
+
+                            <img src="https://kravchenko-place.ru/img/pictures/gallery-6.webp">
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- RSVP -->
+
+                <div class="section">
+
+
+                    <p class="text">
+                        Пожалуйста, подтвердите своё присутствие на нашем празднике до 01.08.2026
+                    </p>
+
+
+
+                </div>
+
+                <div>
+                    <div class="timer">
+                        <div class="timer-item"><span id="days">00</span><span>Дней</span></div>
+                        <div class="timer-item"><span id="hours">00</span><span>Часов</span></div>
+                        <div class="timer-item"><span id="minutes">00</span><span>Минут</span></div>
+                        <div class="timer-item"><span id="seconds">00</span><span>Секунд</span></div>
+                    </div>
+                </div>
+
+                <!-- FOOTER -->
+
+                <div class="footer-block">
+
+                    <h2>
+                        БУДЕМ РАДЫ
+
+                        ВАС ВИДЕТЬ
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+        // Укажите целевую дату (год, месяц (0-11), день, часы, минуты)
+        const targetDate = new Date(2026, 08, 05, 15, 00, 00);
+
+        function updateTimer() {
+            const now = new Date();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                clearInterval(interval);
+                document.querySelector('.timer').innerHTML = "Время вышло!";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        // Запуск таймера сразу и обновление каждую секунду
+        updateTimer();
+        const interval = setInterval(updateTimer, 1000);
+    </script>
+
+</body>
+
+</html>-s
