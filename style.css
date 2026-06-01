@@ -36,7 +36,7 @@ MAIN LAYOUT
     width: 100%;
     max-width: 1300px;
     margin: auto;
-    padding: 20px;
+    padding: 100px 20px;
 }
 
 .cards {
@@ -353,10 +353,6 @@ BUTTON
     font-size: 16px;
     letter-spacing: 0.5px;
     border: none;
-}
-
-.btn:hover {
-    background: #5e6549;
 }
 
 /* =========================
